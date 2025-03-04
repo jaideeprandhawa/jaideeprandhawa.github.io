@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Cursor Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        h1 {
+            margin-bottom: 2rem;
+            color: #3a1c71;
+        }
+        
+        .cursor-outer {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #3a1c71;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+        
+        .cursor-inner {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background-color: #3a1c71;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3a1c71;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: none;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Minimal Custom Cursor Test</h1>
+    <p>Move your mouse to see the custom cursor. If it works here but not on the main site, the issue is likely with CSS conflicts or script loading order.</p>
+    
+    <button class="button">Test Button</button>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create cursor elements
+            const cursorOuter = document.createElement('div');
+            const cursorInner = document.createElement('div');
+            
+            // Add classes
+            cursorOuter.classList.add('cursor-outer');
+            cursorInner.classList.add('cursor-inner');
+            
+            // Add to DOM
+            document.body.appendChild(cursorOuter);
+            document.body.appendChild(cursorInner);
+            
+            // Update position on mouse move
+            document.addEventListener('mousemove', function(e) {
+                cursorOuter.style.left = e.clientX + 'px';
+                cursorOuter.style.top = e.clientY + 'px';
+                cursorInner.style.left = e.clientX + 'px';
+                cursorInner.style.top = e.clientY + 'px';
+            });
+            
+            // Hide default cursor
+            document.documentElement.style.cursor = 'none';
+            document.body.style.cursor = 'none';
+            
+            // Interactive elements
+            const button = document.querySelector('.button');
+            
+            button.addEventListener('mouseenter', function() {
+                cursorOuter.style.width = '40px';
+                cursorOuter.style.height = '40px';
+                cursorOuter.style.backgroundColor = 'rgba(58, 28, 113, 0.1)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                cursorOuter.style.width = '30px';
+                cursorOuter.style.height = '30px';
+                cursorOuter.style.backgroundColor = 'transparent';
+            });
+        });
+    </script>
+</body>
+</html>

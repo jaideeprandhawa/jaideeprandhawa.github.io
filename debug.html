@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Toggle Debug</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-light: #ffffff;
+            --text-light: #333333;
+            --bg-dark: #121212;
+            --text-dark: #f5f5f5;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            padding: 2rem;
+        }
+        
+        body.dark-theme {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3a1c71, #4776e6);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .debug-info {
+            margin-top: 2rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" title="Toggle Dark/Light Mode">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <h1>Dark Mode Debugging</h1>
+    
+    <div class="debug-info">
+        <h2>Current Theme Status:</h2>
+        <div id="theme-status">Light Mode</div>
+        <h2>Local Storage Value:</h2>
+        <div id="storage-value">Not set</div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded');
+            
+            const themeToggle = document.querySelector('.theme-toggle');
+            const themeStatus = document.getElementById('theme-status');
+            const storageValue = document.getElementById('storage-value');
+            
+            // Update debug info
+            function updateDebugInfo() {
+                themeStatus.textContent = document.body.classList.contains('dark-theme') ? 'Dark Mode' : 'Light Mode';
+                storageValue.textContent = localStorage.getItem('theme') || 'Not set';
+            }
+            
+            // Check for saved user preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+                themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+            }
+            
+            updateDebugInfo();
+            
+            // Add click event listener
+            themeToggle.addEventListener('click', function() {
+                console.log('Theme toggle clicked');
+                document.body.classList.toggle('dark-theme');
+                
+                const icon = themeToggle.querySelector('i');
+                if (document.body.classList.contains('dark-theme')) {
+                    localStorage.setItem('theme', 'dark');
+                    icon.classList.replace('fa-moon', 'fa-sun');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    icon.classList.replace('fa-sun', 'fa-moon');
+                }
+                
+                updateDebugInfo();
+            });
+        });
+    </script>
+</body>
+</html>

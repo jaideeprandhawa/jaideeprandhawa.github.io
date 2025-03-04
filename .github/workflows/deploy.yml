@@ -1,0 +1,18 @@
+name: Deploy Portfolio Website
+
+on:
+  push:
+    branches: [ main ]  # Or "master" if that's your default branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+
+      # For username.github.io repositories, GitHub Pages automatically
+      # deploys from the root of the default branch, so this workflow
+      # may not be necessary. Keep it for additional build steps if needed.
+      - name: No build step needed
+        run: echo "GitHub Pages will automatically deploy from the root of the main branch"
