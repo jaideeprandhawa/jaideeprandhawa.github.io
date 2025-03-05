@@ -1,1 +1,4 @@
-Place your resume PDF file here and name it "ResumeJD.pdf".
+Please replace this file with your actual resume PDF named "ResumeJD.pdf".
+
+The resume should be in this exact folder:
+/C:/Users/jaide/Desktop/JaideepWeb/portfolio/assets/documents/

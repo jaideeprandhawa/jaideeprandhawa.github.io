@@ -1,0 +1,167 @@
+/* Additional responsive enhancements for portfolio website */
+
+/* Better large screen support */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+  
+  /* Improve readability on large screens */
+  p {
+    max-width: 70ch; /* Optimal line length for readability */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Prevent excessive stretching */
+  .hero {
+    max-width: 900px;
+  }
+  
+  /* Adjust grid layouts for large screens */
+  .project-grid,
+  .education-grid,
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+  }
+  
+  /* Larger profile image on big screens */
+  .profile-picture {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+/* New tablet-specific breakpoint */
+@media screen and (min-width: 769px) and (max-width: 991px) {
+  /* Tablet-specific styles */
+  .project-grid,
+  .education-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  /* Adjust spacing for better tablet layout */
+  section {
+    padding: 4rem 3rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Improved typography with fluid sizing */
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4vw, 2.2rem);
+}
+
+h3 {
+  font-size: clamp(1.3rem, 3vw, 1.5rem);
+}
+
+p {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+}
+
+/* Enhanced mobile experience */
+@media screen and (max-width: 480px) {
+  /* Improve spacing on small screens */
+  .hero {
+    padding: 1.5rem 1rem;
+  }
+  
+  /* Better button spacing */
+  .download-btn {
+    padding: 0.8rem 1.5rem;
+  }
+  
+  /* Make nav buttons easier to tap */
+  .nav-links li {
+    margin: 1.2rem 0;
+  }
+}
+
+/* Fix for ultrawide monitors */
+@media screen and (min-width: 2000px) {
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 2000px;
+    height: 100%;
+    background-color: var(--background-light);
+    z-index: -2;
+  }
+  
+  .container {
+    max-width: 1500px;
+  }
+}
+
+/* Fix for orientation changes */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .hero {
+    padding: 1rem;
+  }
+  
+  .profile-picture {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Improved print styles */
+@media print {
+  /* Optimize for resume printing */
+  @page {
+    margin: 1.5cm;
+  }
+  
+  .navbar, 
+  .theme-toggle, 
+  .back-to-top,
+  .particles-container,
+  .resume-button {
+    display: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    background: white !important;
+    color: black !important;
+  }
+  
+  a {
+    color: #000 !important;
+    text-decoration: underline;
+  }
+  
+  h1, h2, h3 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+  
+  .hero, section {
+    page-break-inside: avoid;
+  }
+}

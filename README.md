@@ -2,6 +2,10 @@
 
 ![Portfolio Preview](images/portfolio-preview.png)
 
+## Live Site
+
+Visit my portfolio at: [https://jaideeprandhawa.github.io](https://jaideeprandhawa.github.io)
+
 ## Overview
 
 This is my personal portfolio website showcasing my skills, projects, and experience as a Computer Science Engineering student and Data Science enthusiast.
