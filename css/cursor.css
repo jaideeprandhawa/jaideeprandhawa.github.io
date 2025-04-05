@@ -1,0 +1,112 @@
+/* Enhanced cursor styles with improved reliability for GitHub Pages deployment */
+
+/* Base cursor styles with !important to ensure they apply */
+.cursor-outer,
+.cursor-inner {
+  position: fixed !important;
+  pointer-events: none !important;
+  z-index: 9999 !important;
+  border-radius: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  will-change: transform !important;
+  transition: width 0.3s, height 0.3s, background-color 0.3s !important;
+  display: block !important;
+}
+
+.cursor-outer {
+  width: 30px !important;
+  height: 30px !important;
+  border: 2px solid var(--primary-color) !important;
+  opacity: 0.8 !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.cursor-inner {
+  width: 8px !important;
+  height: 8px !important;
+  background-color: var(--primary-color) !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+/* Interactive states with !important */
+.cursor-hover.cursor-outer {
+  width: 40px !important;
+  height: 40px !important;
+  background-color: rgba(58, 28, 113, 0.1) !important;
+  border-width: 2px !important;
+}
+
+.cursor-hover.cursor-inner {
+  width: 10px !important;
+  height: 10px !important;
+  background-color: var(--secondary-color) !important;
+}
+
+.cursor-active.cursor-outer {
+  width: 36px !important;
+  height: 36px !important;
+  opacity: 1 !important;
+  background-color: rgba(71, 118, 230, 0.2) !important;
+}
+
+.cursor-active.cursor-inner {
+  width: 6px !important;
+  height: 6px !important;
+  background-color: var(--secondary-color) !important;
+}
+
+/* Dark theme cursor adjustments */
+.dark-theme .cursor-outer {
+  border-color: var(--secondary-color) !important;
+  opacity: 0.7 !important;
+}
+
+.dark-theme .cursor-inner {
+  background-color: var(--secondary-color) !important;
+}
+
+/* Hide cursor on mobile/touch devices regardless of media queries */
+@media (hover: none), (pointer: coarse), (max-width: 768px) {
+  .cursor-outer,
+  .cursor-inner,
+  #cursor-outer-fixed,
+  #cursor-inner-fixed {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+  
+  html, body, * {
+    cursor: auto !important;
+  }
+}
+
+/* Desktop media query to ensure cursor appears */
+@media (min-width: 769px) and (hover: hover) and (pointer: fine) {
+  html.desktop-detected, 
+  body.desktop-detected {
+    cursor: none !important;
+  }
+  
+  .cursor-outer, 
+  .cursor-inner {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
+
+/* Debug helper class */
+.cursor-debug-info {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 5px;
+  font-size: 10px;
+  z-index: 10000;
+  border-radius: 3px;
+}

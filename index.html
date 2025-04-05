@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cursor.css">
     <link rel="stylesheet" href="css/responsive-enhancements.css">
-    <script src="js/cursor-fix.js"></script>
+    <!-- Remove the early cursor script that may cause issues -->
+    <!-- <script src="js/cursor-fix.js"></script> -->
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
     <!-- Meta tags for SEO -->
@@ -255,14 +256,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
     
-    <!-- Add cursor fix script first to take precedence -->
+    <!-- Important: Load cursor script properly -->
     <script src="js/cursor-fix.js"></script>
     
     <!-- Then existing scripts -->
     <script src="js/particles-config.js" defer></script>
     <script src="js/main.js" defer></script>
     
-    <!-- Keep debug script if still needed -->
-    <script src="js/cursor-debug.js"></script>
+    <!-- Remove debug script if not needed -->
+    <!-- <script src="js/cursor-debug.js"></script> -->
 </body>
 </html>
